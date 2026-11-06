@@ -1,7 +1,6 @@
-[server]
-headless = true
-enableCORS = false
-enableXsrfProtection = false
-
 [theme]
-primaryColor = "#FF9900"
+primaryColor = "#2563EB"              # Accent color for sliders, buttons, highlights
+backgroundColor = "#F8FAFC"           # Main page background color
+secondaryBackgroundColor = "#FFFFFF"  # Sidebar and card background color
+textColor = "#0F172A"                 # Text color
+font = "sans serif"
