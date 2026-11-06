@@ -6,7 +6,11 @@ from pathlib import Path
 
 import pandas as pd
 import plotly.express as px
+import plotly.io as pio
 import streamlit as st
+
+# Global Plotly Template Set Kiya
+pio.templates.default = "plotly_white"
 
 st.set_page_config(page_title="E-Commerce Sales Analytics", page_icon="🛒", layout="wide")
 st.markdown("""
@@ -111,8 +115,24 @@ tab1, tab2, tab3, tab4 = st.tabs(["📈 Trends", "🏷️ Products", "🗺️ Ge
 with tab1:
     daily = sales.groupby("date", as_index=False)["revenue"].sum()
     daily["7-day avg"] = daily["revenue"].rolling(7, min_periods=1).mean()
-    fig = px.line(daily, x="date", y=["revenue", "7-day avg"], title="Daily revenue")
-    fig.update_layout(legend_title_text="", yaxis_title="INR")
+    
+    # Custom styling aur layout updates yahan add kiye gaye hain
+    fig = px.line(
+        daily, 
+        x="date", 
+        y=["revenue", "7-day avg"], 
+        title="Daily revenue",
+        color_discrete_sequence=["#2563EB", "#F59E0B"]  # Revenue ke liye Blue aur 7-day avg ke liye Amber
+    )
+    fig.update_layout(
+        plot_bgcolor="rgba(0,0,0,0)",
+        paper_bgcolor="rgba(0,0,0,0)",
+        title_font=dict(size=16, family="Arial", color="#0F172A"),
+        margin=dict(l=20, r=20, t=40, b=20),
+        hovermode="x unified",
+        legend_title_text="", 
+        yaxis_title="INR"
+    )
     st.plotly_chart(fig, use_container_width=True)
 
     col_a, col_b = st.columns(2)
