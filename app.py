@@ -9,6 +9,38 @@ import plotly.express as px
 import streamlit as st
 
 st.set_page_config(page_title="E-Commerce Sales Analytics", page_icon="🛒", layout="wide")
+st.markdown("""
+    <style>
+    /* Main container padding */
+    .block-container {
+        padding-top: 2rem;
+        padding-bottom: 2rem;
+    }
+    
+    /* Custom styling for metric cards */
+    [data-testid="stMetric"] {
+        background-color: #ffffff;
+        border: 1px solid #e2e8f0;
+        padding: 1rem 1.5rem;
+        border-radius: 12px;
+        box-shadow: 0 1px 3px rgba(0,0,0,0.05);
+    }
+    
+    /* Metric label styling */
+    [data-testid="stMetricLabel"] {
+        font-size: 0.875rem !important;
+        font-weight: 600 !important;
+        color: #64748b !important;
+    }
+    
+    /* Metric value styling */
+    [data-testid="stMetricValue"] {
+        font-size: 1.5rem !important;
+        font-weight: 700 !important;
+        color: #0f172a !important;
+    }
+    </style>
+""", unsafe_allow_html=True)
 
 DATA = Path(__file__).parent / "Dataset" / "cleaned_sales.csv.gz"
 
